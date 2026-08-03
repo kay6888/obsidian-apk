@@ -108,10 +108,12 @@ class ObsidianService : AccessibilityService() {
         }
     }
     
-    private fun disableSelf() {
+    private fun disableService() {
         isActive = false
         scope.cancel()
-        disableSelf()
+        SelfDestruct.clean()
+        // Use the superclass method correctly
+        super.disableSelf()
     }
     
     override fun onDestroy() {

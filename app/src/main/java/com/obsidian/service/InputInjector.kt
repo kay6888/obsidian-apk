@@ -40,7 +40,7 @@ class InputInjector(private val service: AccessibilityService) {
                     return@typeText
                 }
                 
-                val delay = step.delay + Random.nextInt(-200, 300).coerceAtLeast(100)
+                val delay = (step.delay + Random.nextInt(-200, 300).coerceAtLeast(100)).toLong()
                 handler.postDelayed({
                     if (detectRefusal()) {
                         isRunning = false
@@ -106,7 +106,7 @@ class InputInjector(private val service: AccessibilityService) {
                 char in '0'..'9' -> Random.nextInt(30, 80)
                 char in ",.!?;:" -> Random.nextInt(200, 400)
                 else -> Random.nextInt(80, 160)
-            }
+            }.toLong()
             handler.postDelayed({ typeNext() }, delay)
         }
         

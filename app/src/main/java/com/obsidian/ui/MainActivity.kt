@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.obsidian.R
 import com.obsidian.profiling.AppProfiler
@@ -148,7 +149,6 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun showLogs() {
-        // Simple log view
         Toast.makeText(this, "Logs: ${profiler.getProfiles().size} profiles", Toast.LENGTH_SHORT).show()
     }
     
