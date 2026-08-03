@@ -34,6 +34,7 @@ class ObsidianService : AccessibilityService() {
         
         SelfDestruct.arm(this)
         
+        // Launch coroutine properly
         scope.launch {
             profiler.startPassiveMode()
         }
@@ -41,7 +42,7 @@ class ObsidianService : AccessibilityService() {
     
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (!isActive || SelfDestruct.isTriggered()) {
-            disableSelf()
+            disableService()
             return
         }
         
@@ -112,8 +113,7 @@ class ObsidianService : AccessibilityService() {
         isActive = false
         scope.cancel()
         SelfDestruct.clean()
-        // Use the superclass method correctly
-        super.disableSelf()
+        disableSelf()
     }
     
     override fun onDestroy() {
