@@ -12,7 +12,7 @@
     <application
         android:name=".ObsidianApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="Obsidian"
         android:theme="@style/Theme.Obsidian"
         android:usesCleartextTraffic="false"
