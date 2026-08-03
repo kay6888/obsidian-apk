@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="phosphor_green">#00FF41</color>
+    <color name="dark_bg">#0A0A0A</color>
+    <color name="dark_surface">#1A1A1A</color>
+    <color name="alert_red">#FF4444</color>
+    <color name="subtle_gray">#446666</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

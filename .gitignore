@@ -1,0 +1,26 @@
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+build/
+app/build/
+.gradle/
+local.properties
+*.iml
+.gradle/
+.idea/
+*.swp
+*.swo
+*~
+
+# Termux specific
+*.log
+*.tmp
+
+# Sensitive
+gradle.properties.local
+keystore.properties
+*.keystore
+*.jks
