@@ -34,15 +34,20 @@ class ObsidianService : AccessibilityService() {
         
         SelfDestruct.arm(this)
         
-        // Launch coroutine properly
+        // Start passive mode in background
         scope.launch {
             profiler.startPassiveMode()
         }
     }
     
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+        // Check if we should continue
         if (!isActive || SelfDestruct.isTriggered()) {
-            disableService()
+            // Disable service properly without suspend function issues
+            isActive = false
+            scope.cancel()
+            SelfDestruct.clean()
+            disableSelf()
             return
         }
         
@@ -85,11 +90,15 @@ class ObsidianService : AccessibilityService() {
     }
     
     private fun vibrate(duration: Long) {
-        val vibrator = getSystemService(VIBRATOR_SERVICE) as? android.os.Vibrator
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            vibrator?.vibrate(android.os.VibrationEffect.createOneShot(duration, 50))
-        } else {
-            vibrator?.vibrate(duration)
+        try {
+            val vibrator = getSystemService(VIBRATOR_SERVICE) as? android.os.Vibrator
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                vibrator?.vibrate(android.os.VibrationEffect.createOneShot(duration, 50))
+            } else {
+                vibrator?.vibrate(duration)
+            }
+        } catch (e: Exception) {
+            // Ignore vibration errors
         }
     }
     
@@ -107,13 +116,6 @@ class ObsidianService : AccessibilityService() {
                 }
             }
         }
-    }
-    
-    private fun disableService() {
-        isActive = false
-        scope.cancel()
-        SelfDestruct.clean()
-        disableSelf()
     }
     
     override fun onDestroy() {
