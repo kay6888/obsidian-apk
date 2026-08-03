@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: false  # Forces Node 20
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Forces Node 24
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
