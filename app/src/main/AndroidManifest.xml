@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.obsidian">
 
     <application
         android:name=".ObsidianApplication"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="Obsidian"
-        android:theme="@style/Theme.Obsidian"
-        android:usesCleartextTraffic="false"
-        tools:targetApi="31">
+        android:theme="@style/Theme.Obsidian">
 
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
-            android:launchMode="singleTop">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

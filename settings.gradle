@@ -1,0 +1,2 @@
+rootProject.name = 'Obsidian'
+include ':app'
