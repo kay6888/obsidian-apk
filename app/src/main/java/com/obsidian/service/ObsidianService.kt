@@ -105,23 +105,23 @@ class ObsidianService : AccessibilityService() {
         }
     }
     
-    fun injectChain(app: String, target: String, callback: (Boolean) -> Unit) {
-        val chain = chainBuilder.build(app, target)
-        if (chain.isEmpty()) {
-            callback(false)
-            return
-        }
-        
-        scope.launch {
-            injector.execute(chain) { success ->
-                withContext(Dispatchers.Main) {
-                    callback(success)
-                }
+   fun injectChain(app: String, target: String, callback: (Boolean) -> Unit) {
+    val chain = chainBuilder.build(app, target)
+
+    if (chain.isEmpty()) {
+        callback(false)
+        return
+    }
+
+    scope.launch {
+        injector.execute(chain) { success ->
+            scope.launch(Dispatchers.Main) {
+                callback(success)
             }
         }
     }
-    
-    override fun onDestroy() {
+}
+   override fun onDestroy() {
         isActive = false
         scope.cancel()
         SelfDestruct.clean()
