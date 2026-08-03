@@ -9,7 +9,7 @@ import android.os.Vibrator
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 
-import com.obsidian.input.InputInjector
+import com.obsidian.InputInjector
 import com.obsidian.profiling.AppProfiler
 import com.obsidian.profiling.ChainBuilder
 import com.obsidian.utils.SelfDestruct
